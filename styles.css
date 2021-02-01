@@ -25,6 +25,9 @@ body{
 .navigation .mobile{
     display: none;
 }
+.navigation .icon-close{
+    display: none;
+}
 .desktop{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
@@ -58,7 +61,7 @@ body{
     display: grid;
     grid-template-columns: 64fr 36fr;
     justify-content: center;
-    margin: var(--section-margin) 0;
+    margin: var(--section-margin) 0 0;
 }
 .section-img{
     width: 100%;
@@ -73,18 +76,17 @@ body{
     background-color: #fff;
 }
 .content .heading{
-    font-size: 3.5em;
+    font-size: 3em;
     text-transform: uppercase;
     margin: 2rem 0;
 }
 .content .description{
-    font-size: 1em;
+    font-size: 0.8em;
     line-height: 1.5rem;
     margin: 2rem 0;
 }
 .section-2{
     padding: var(--height-padding) var(--width-padding);
-    margin: var(--section-margin) 0;
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
@@ -131,6 +133,7 @@ body{
     position: absolute;
     bottom: 0rem;
     left: 2rem;
+    opacity: 0.7;
 }
 .item:nth-child(1){
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url("./images/desktop/image-deep-earth.jpg") no-repeat;
@@ -194,6 +197,7 @@ body{
 }
 .item:nth-child(8):hover{
     background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/desktop/image-fisheye.jpg") no-repeat;
+    background-size: 100%;
 }
 .footer{
     background-color: black;
@@ -233,11 +237,14 @@ body{
     font-size: 0.8em;
     opacity: 0.7;
 }
+.mobile-menu{
+    display: none;
+}
 @media(max-width: 1250px){
     .head .heading{
         padding: 1rem;
-        font-size: 3em;
-        width: calc(50% - 2rem);
+        font-size: 4.5em;
+        width: calc(70% - 2rem);
     }
     .section-1{
         grid-template-columns: 1fr;
@@ -270,7 +277,7 @@ body{
         --width-padding: 6%;
         --section-margin: 0;
     }
-    body{
+    .main{
         position: relative;
     }
     .head{
@@ -286,8 +293,8 @@ body{
     }
     .head .heading{
         padding: 1rem;
-        font-size: 3em;
-        width: calc(100% - 2rem);
+        font-size: 4em;
+        width: calc(80% - 2rem);
     }
     .section-2{
         grid-template-columns: 1fr;
@@ -340,6 +347,38 @@ body{
         background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url("./images/mobile/image-fisheye.jpg") no-repeat;
         background-size: 100%;
     }
+    .item:nth-child(1):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-deep-earth.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(2):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-night-arcade.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(3):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-soccer-team.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(4):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-grid.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(5):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-from-above.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(6):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-pocket-borealis.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(7):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-curiosity.jpg") no-repeat;
+        background-size: 100%;
+    }
+    .item:nth-child(8):hover{
+        background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./images/mobile/image-fisheye.jpg") no-repeat;
+        background-size: 100%;
+    }
     .button-see-all{
         width: 30%;
         margin: auto;
@@ -368,5 +407,60 @@ body{
     }
     .social-media{
         justify-content: center;
+    }
+    @keyframes menu {
+        from{opacity: 0;}
+        to{opacity: 1;}
+    }
+    .active .navigation{
+        z-index: 2;
+        position: relative;
+    }
+    .active .mobile-menu{
+        display: block;
+        background-color: black;
+        padding: var(--height-padding) var(--width-padding);
+        width: calc(100vw - (2 * var(--width-padding)));
+        height: calc(81vh - (2 * var(--height-padding)));
+        color: #fff;
+        position: absolute;
+        top: 0;
+        animation: menu 0.5s;
+    }
+    .active .mobile-menu .desktop{
+        grid-template-columns: auto;
+        gap: 0.5rem;
+        position: absolute;
+        top: 58%;
+        transform: translateY(-50%);
+    }
+    .active .mobile-menu .desktop .items{
+        text-align: left;
+        font-size: 1.25em;
+        text-transform: uppercase;
+    }
+    .active .mobile-menu .desktop .items:hover{
+        font-weight: bold;
+    }
+    .active .mobile-menu .desktop .items:hover span{
+        width: 0;
+    }
+    .active .navigation .mobile{
+        display: none;
+    }
+    .active .navigation .icon-close{
+        display: block;
+    }
+}
+@media (max-width: 650px){
+    .head .heading{
+        padding: 1rem;
+        font-size: 3em;
+        width: calc(100% - 2rem);
+    }
+    .item-name{
+        font-size: 1.75em;
+        bottom: -1rem;
+        left: 1rem;
     }
 }
