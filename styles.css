@@ -227,6 +227,7 @@ body{
 .icon{
     border-bottom: 2px solid black;
     padding-bottom: 0.5rem;
+    cursor: pointer;
 }
 .icon:hover{
     border-bottom: 2px solid white;
